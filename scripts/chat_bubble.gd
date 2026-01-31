@@ -103,6 +103,7 @@ func _load_emotion_texture() -> void:
 	_emotion_order_index += 1
 
 func _on_area_entered_starter_area(area: Area3D) -> void:
+	print(area.name)
 	if area.name == "PlayerStarterArea":
 		_next_dialogue_button.input_event.connect(_on_click_background)
 		_change_dialogue()

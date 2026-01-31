@@ -11,14 +11,20 @@
 [ext_resource type="Texture2D" uid="uid://1gxnwuk0r4om" path="res://assets/model/ruang_kelas/kaca.png" id="9_kvuet"]
 [ext_resource type="Texture2D" uid="uid://dve7kv6glf0s" path="res://assets/model/ruang_kelas/kursi guru.png" id="10_trtic"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vtaks"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_kvpfn"]
+sky_material = SubResource("ProceduralSkyMaterial_vtaks")
+
+[sub_resource type="Environment" id="Environment_dinhu"]
+background_mode = 2
+sky = SubResource("Sky_kvpfn")
+tonemap_mode = 1
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_mwb40"]
 size = Vector3(100, 1, 100)
-
-[sub_resource type="BoxMesh" id="BoxMesh_feb5d"]
-size = Vector3(100, 1, 100)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwb40"]
-albedo_color = Color(0.28118682, 0.28118688, 0.28118682, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lbhrr"]
 size = Vector2(0.5, 0.5)
@@ -26,8 +32,8 @@ size = Vector2(0.5, 0.5)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6k2g3"]
 resource_name = "Abu SMA"
 cull_mode = 2
+shading_mode = 0
 albedo_texture = ExtResource("4_lbhrr")
-roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_r30w4"]
 resource_name = "npc_Cube_005"
@@ -285,12 +291,13 @@ _data = {
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4txds"]
+shading_mode = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8pxxq"]
 resource_name = "tembok"
 cull_mode = 2
+shading_mode = 0
 albedo_texture = ExtResource("6_vtaks")
-roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_lnf1r"]
 _surfaces = [{
@@ -379,8 +386,8 @@ shadow_mesh = SubResource("ArrayMesh_km0rq")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwfw1"]
 resource_name = "papan tulis"
 cull_mode = 2
+shading_mode = 0
 albedo_texture = ExtResource("7_kvpfn")
-roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_1qjsl"]
 _surfaces = [{
@@ -451,8 +458,8 @@ shadow_mesh = SubResource("ArrayMesh_ue4pw")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vscoe"]
 resource_name = "meja"
 cull_mode = 2
+shading_mode = 0
 albedo_texture = ExtResource("8_dinhu")
-roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_n3pux"]
 _surfaces = [{
@@ -2371,8 +2378,8 @@ shadow_mesh = SubResource("ArrayMesh_sp0yt")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ybqme"]
 resource_name = "kaca"
 cull_mode = 2
+shading_mode = 0
 albedo_texture = ExtResource("9_kvuet")
-roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_xna5d"]
 _surfaces = [{
@@ -3189,20 +3196,20 @@ shadow_mesh = SubResource("ArrayMesh_tbmg4")
 [node name="Game" type="Node3D" unique_id=1136443421]
 script = ExtResource("1_lnu2h")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=320723402]
+environment = SubResource("Environment_dinhu")
+
 [node name="Ground" type="StaticBody3D" parent="." unique_id=527879678]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96118855, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1104163022]
 shape = SubResource("BoxShape3D_mwb40")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=511538261]
-mesh = SubResource("BoxMesh_feb5d")
-surface_material_override/0 = SubResource("StandardMaterial3D_mwb40")
 
 [node name="Player" parent="." unique_id=1449521604 instance=ExtResource("1_80nbo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4999998, 0)
 
 [node name="ChatBubble" parent="." unique_id=769760397 instance=ExtResource("2_e2o6t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8964546, -1.4785551)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8964546, -1.4785551)
 _emotion_show_index = Array[int]([0, 2])
 _speaker_order = Array[int]([4, 0, 0, 4, 0, 4])
 _npc = 4
@@ -3351,8 +3358,6 @@ libraries/ = SubResource("AnimationLibrary_1sumt")
 
 [node name="ruang kelas" type="Node3D" parent="." unique_id=1735059521]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.89931583, 0)
-metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
 
 [node name="tembok" type="MeshInstance3D" parent="ruang kelas" unique_id=1493488141]
 mesh = SubResource("ArrayMesh_hqei8")

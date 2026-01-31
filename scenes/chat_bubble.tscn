@@ -6,6 +6,15 @@
 [sub_resource type="PlaneMesh" id="PlaneMesh_80nbo"]
 size = Vector2(3, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8oay"]
+resource_local_to_scene = true
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+disable_specular_occlusion = true
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_udckb"]
 size = Vector3(3.0947266, 1, 1)
 
@@ -19,9 +28,11 @@ script = ExtResource("1_udckb")
 [node name="Background" type="MeshInstance3D" parent="." unique_id=1906216501]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 2, 0)
 mesh = SubResource("PlaneMesh_80nbo")
+surface_material_override/0 = SubResource("StandardMaterial3D_f8oay")
 
 [node name="Label3D" type="Label3D" parent="Background" unique_id=1506914852]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.012143493, 0)
+billboard = 1
 modulate = Color(0, 0, 0, 1)
 text = "XDD"
 outline_size = 1
