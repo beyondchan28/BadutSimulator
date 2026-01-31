@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cq7agaekwguul"]
+
+[ext_resource type="PackedScene" uid="uid://i1l8alyui7uv" path="res://scenes/player.tscn" id="1_80nbo"]
+[ext_resource type="PackedScene" uid="uid://cthwre6hsd6rv" path="res://scenes/chat_bubble.tscn" id="2_e2o6t"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mwb40"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_80nbo"]
+sky_material = SubResource("ProceduralSkyMaterial_mwb40")
+
+[sub_resource type="Environment" id="Environment_e2o6t"]
+background_mode = 2
+sky = SubResource("Sky_80nbo")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mwb40"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_feb5d"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwb40"]
+albedo_color = Color(0.28118682, 0.28118688, 0.28118682, 1)
+
+[node name="Game" type="Node3D" unique_id=1136443421]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=557001199]
+environment = SubResource("Environment_e2o6t")
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=527879678]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1104163022]
+shape = SubResource("BoxShape3D_mwb40")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=511538261]
+mesh = SubResource("BoxMesh_feb5d")
+surface_material_override/0 = SubResource("StandardMaterial3D_mwb40")
+
+[node name="Player" parent="." unique_id=1449521604 instance=ExtResource("1_80nbo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4999998, 0)
+
+[node name="ChatBubble" parent="." unique_id=769760397 instance=ExtResource("2_e2o6t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8964546, -1.4785551)
+_emotion_show_index = Array[int]([0, 2])
+_speaker_order = Array[int]([4, 0, 0, 4, 0, 4])
+_npc = 4

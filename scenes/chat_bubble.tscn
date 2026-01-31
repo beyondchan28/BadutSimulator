@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://cthwre6hsd6rv"]
+
+[ext_resource type="Script" uid="uid://dk6c6c0fhaics" path="res://scripts/chat_bubble.gd" id="1_udckb"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_80nbo"]
+size = Vector2(3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_udckb"]
+size = Vector3(3.0947266, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qcqw1"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_qcqw1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f8oay"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_xftsg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gcjb"]
+albedo_color = Color(1, 0, 0.016666412, 1)
+
+[node name="ChatBubble" type="Node3D" unique_id=769760397]
+script = ExtResource("1_udckb")
+
+[node name="Background" type="MeshInstance3D" parent="." unique_id=1906216501]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 2, 0)
+mesh = SubResource("PlaneMesh_80nbo")
+
+[node name="Label3D" type="Label3D" parent="Background" unique_id=1506914852]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.012143493, 0)
+modulate = Color(0, 0, 0, 1)
+text = "asdasdasdasdasd1reeasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd"
+outline_size = 1
+autowrap_mode = 3
+width = 400.0
+
+[node name="InputArea" type="Area3D" parent="Background" unique_id=385740559]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Background/InputArea" unique_id=3366774]
+shape = SubResource("BoxShape3D_udckb")
+
+[node name="A" type="Marker3D" parent="." unique_id=1065478678]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)
+
+[node name="B" type="Marker3D" parent="." unique_id=1089420267]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=409625418]
+transform = Transform3D(1, 0, 0, 0, 0.8733135, 0.4871587, 0, -0.4871587, 0.8733135, 0, 3.0831718, 3.2156994)
+
+[node name="StarterArea" type="Area3D" parent="." unique_id=1782216528]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2635589, 0, 0)
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StarterArea" unique_id=1294680841]
+shape = SubResource("BoxShape3D_qcqw1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StarterArea" unique_id=1466319807]
+mesh = SubResource("SphereMesh_qcqw1")
+
+[node name="Option" type="Node3D" parent="." unique_id=428158937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.415007, 1.7236185, 0)
+
+[node name="InputArea" type="Area3D" parent="Option" unique_id=1370222342]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Option/InputArea" unique_id=1729535597]
+shape = SubResource("BoxShape3D_f8oay")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Option/InputArea" unique_id=1400280920]
+mesh = SubResource("SphereMesh_xftsg")
+surface_material_override/0 = SubResource("StandardMaterial3D_2gcjb")
+
+[node name="InputArea2" type="Area3D" parent="Option" unique_id=1220329941]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5912094, 1.4482508, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Option/InputArea2" unique_id=1161185907]
+shape = SubResource("BoxShape3D_f8oay")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Option/InputArea2" unique_id=1557717979]
+mesh = SubResource("SphereMesh_xftsg")
+surface_material_override/0 = SubResource("StandardMaterial3D_2gcjb")
+
+[node name="InputArea3" type="Area3D" parent="Option" unique_id=165636214]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.773139, -1.6087399, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Option/InputArea3" unique_id=1680023622]
+shape = SubResource("BoxShape3D_f8oay")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Option/InputArea3" unique_id=43111829]
+mesh = SubResource("SphereMesh_xftsg")
+surface_material_override/0 = SubResource("StandardMaterial3D_2gcjb")
