@@ -7,7 +7,6 @@ enum Speaker {
 enum Emotion {
 	EXCITED, SARCASTIC, MOCKING, AMAZE, HUMBLE, FACE_SCREAMING, BIG_SMILE,
 	SMILE, HAPPY, LAUGH, CRY, SURPRISE, WINK, STRAIGHT_FACE, TONGUE_TIED,
-	CONFUSED, SKEPTIC, AWKWARD
 }
 
 @export var _emotion_show_index :Array[int]
@@ -20,6 +19,8 @@ enum Emotion {
 @onready var _next_dialogue_button: Area3D = $Background/InputArea
 @onready var _starter_area: Area3D = $StarterArea
 @onready var _options: Node3D = $Options
+@onready var  _game: Game = $"../"
+
 
 @export var _npc: Speaker
 var _emotion_option_order: Array[Array]
@@ -48,10 +49,38 @@ func _setup_option_data() -> void:
 			])
 			_emotion_option_order.append([
 				Emotion.SARCASTIC,
-				Emotion.AMAZE,
-				Emotion.EXCITED
+				Emotion.SMILE,
+				Emotion.BIG_SMILE
 			])
-	
+
+func _check_option_weight(emo: Emotion) -> int:
+	match _npc:
+		Speaker.WIBU:
+			if _emotion_order_index - 1 == 0:
+				match emo:
+					Emotion.SARCASTIC:
+						return 2
+					Emotion.AMAZE:
+						return 1
+					Emotion.EXCITED:
+						return 3
+					_:
+						return 0
+			elif _emotion_order_index - 1 == 1:
+				match emo:
+					Emotion.SARCASTIC:
+						return 3
+					Emotion.SMILE:
+						return 2
+					Emotion.BIG_SMILE:
+						return 1
+					_:
+						return 0
+			else:
+				return 0
+			
+		_:
+			return 0
 
 func _ready() -> void:
 	_starter_area.area_entered.connect(_on_area_entered_starter_area, CONNECT_ONE_SHOT)
@@ -68,6 +97,7 @@ func _load_emotion_texture() -> void:
 		var emotion: Emotion = _emotion_option_order[_emotion_order_index][i]
 		var emotion_as_string: String = (Emotion.keys()[emotion] as String).to_lower()
 		print(emotion_as_string)
+		input_area.set_meta("emo", emotion)
 		var texture: CompressedTexture2D = load(folder_path + emotion_as_string + ".png")
 		((input_area.get_child(1) as MeshInstance3D).get_surface_override_material(0) as StandardMaterial3D).albedo_texture = texture
 	_emotion_order_index += 1
@@ -89,6 +119,11 @@ func _check_option() -> void:
 		_options.show()
 func _on_choosing_option(_cam: Node, event: InputEvent, _event_pos: Vector3, _normal: Vector3, _shape_idx: int, btn_index: int) -> void:
 	if event is InputEventMouseButton and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT:
+		
+		# check wieght
+		var emo: Emotion = _options.get_child(btn_index).get_meta("emo")
+		var weight : int = _check_option_weight(emo)
+		_game.increase_asik_meter(weight)
 		
 		# set mask
 		var option_input_visual: MeshInstance3D = _options.get_child(btn_index).get_child(1)
@@ -137,6 +172,7 @@ func _change_dialogue() -> void:
 		$Camera3D.set_current(false)
 		_player.set_activation(true)
 		_player.set_mask(null)
+		_game.increase_dialogue_done()
 		print("[INFO] Dialogue is finished")
 		self.queue_free()
 

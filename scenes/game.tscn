@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cq7agaekwguul"]
 
 [ext_resource type="PackedScene" uid="uid://i1l8alyui7uv" path="res://scenes/player.tscn" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://eqtj21a63dak" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cthwre6hsd6rv" path="res://scenes/chat_bubble.tscn" id="2_e2o6t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mwb40"]
@@ -26,6 +27,7 @@ size = Vector3(100, 1, 100)
 albedo_color = Color(0.28118682, 0.28118688, 0.28118682, 1)
 
 [node name="Game" type="Node3D" unique_id=1136443421]
+script = ExtResource("1_lnu2h")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=557001199]
 environment = SubResource("Environment_e2o6t")
@@ -47,3 +49,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8964546, -1.4785551)
 _emotion_show_index = Array[int]([0, 2])
 _speaker_order = Array[int]([4, 0, 0, 4, 0, 4])
 _npc = 4
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=546856349]
+
+[node name="AsikMeter" type="ProgressBar" parent="CanvasLayer" unique_id=1661396794]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -324.5
+offset_right = 324.5
+offset_bottom = 40.0
+grow_horizontal = 2
+max_value = 27.0

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0k7wilsem3km"
-path="res://.godot/imported/1F61D.png-ec05c7ed67387c7b7dc599c40966ffe2.ctex"
+uid="uid://0bi3wb1qqr73"
+path="res://.godot/imported/Star-Struck.png-b6f54f8f5b534642f24c9c6d2e1d85d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/emoticons/1F61D.png"
-dest_files=["res://.godot/imported/1F61D.png-ec05c7ed67387c7b7dc599c40966ffe2.ctex"]
+source_file="res://assets/emoticons/Star-Struck.png"
+dest_files=["res://.godot/imported/Star-Struck.png-b6f54f8f5b534642f24c9c6d2e1d85d6.ctex"]
 
 [params]
 
