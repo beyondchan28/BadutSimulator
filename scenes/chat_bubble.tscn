@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dk6c6c0fhaics" path="res://scripts/chat_bubble.gd" id="1_udckb"]
 [ext_resource type="PackedScene" uid="uid://d3y6e0560tpc" path="res://scenes/option_input_area.tscn" id="2_f8oay"]
+[ext_resource type="FontFile" uid="uid://dyjc5i8gtevsh" path="res://assets/fFaedahnya.ttf" id="2_xftsg"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_80nbo"]
 size = Vector2(3, 1)
@@ -34,7 +35,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_f8oay")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.012143493, 0)
 modulate = Color(0, 0, 0, 1)
 text = "XDD"
-outline_size = 1
+font = ExtResource("2_xftsg")
 autowrap_mode = 3
 width = 400.0
 

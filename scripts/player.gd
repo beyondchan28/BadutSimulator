@@ -67,9 +67,9 @@ func set_mask(texture) -> void: # compressed2d or null
 		$Mask.show()
 	($Mask.get_surface_override_material(0) as StandardMaterial3D).albedo_texture = texture
 
-func _unhandled_input(_event):
-	if Input.is_action_just_pressed("ui_cancel"):
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-			set_activation(false)
-		else:
-			set_activation(true)
+#func _unhandled_input(_event):
+	#if Input.is_action_just_pressed("ui_cancel"):
+		#if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+			#set_activation(false)
+		#else:
+			#set_activation(true)

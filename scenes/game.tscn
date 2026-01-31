@@ -3,10 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://i1l8alyui7uv" path="res://scenes/player.tscn" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://eqtj21a63dak" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cthwre6hsd6rv" path="res://scenes/chat_bubble.tscn" id="2_e2o6t"]
+[ext_resource type="Texture2D" uid="uid://c3nx0wwcd55e8" path="res://assets/user_interfaces/ResultBoard.png" id="4_dinhu"]
 [ext_resource type="Texture2D" uid="uid://dupnskjbt02i4" path="res://assets/model/npc/NPC Color.png" id="4_lbhrr"]
 [ext_resource type="Material" uid="uid://bbbobw10yiefy" path="res://mask_material.tres" id="4_vtaks"]
+[ext_resource type="FontFile" uid="uid://dyjc5i8gtevsh" path="res://assets/fFaedahnya.ttf" id="5_kvuet"]
+[ext_resource type="Texture2D" uid="uid://ckqkj0txv2xqy" path="res://assets/user_interfaces/Restart.png" id="6_ca42v"]
 [ext_resource type="Texture2D" uid="uid://bkjjcguqkrk6i" path="res://assets/model/ruang_kelas/e82b850e8eafd2fe5fec1b7ca9a98004.jpg" id="6_vtaks"]
+[ext_resource type="Texture2D" uid="uid://p6hwe1wk83ny" path="res://assets/user_interfaces/ExitButton.png" id="7_ir15t"]
 [ext_resource type="Texture2D" uid="uid://dfbtojlys3twm" path="res://assets/model/ruang_kelas/papan tulis.png" id="7_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://bsh1lrnk8srwc" path="res://assets/user_interfaces/MainMenu.png" id="7_rysoc"]
 [ext_resource type="Texture2D" uid="uid://crv21u8tjhho4" path="res://assets/model/ruang_kelas/kayu meja.jpg" id="8_dinhu"]
 [ext_resource type="Texture2D" uid="uid://1gxnwuk0r4om" path="res://assets/model/ruang_kelas/kaca.png" id="9_kvuet"]
 [ext_resource type="Texture2D" uid="uid://dve7kv6glf0s" path="res://assets/model/ruang_kelas/kursi guru.png" id="10_trtic"]
@@ -3458,14 +3463,165 @@ _npc = 4
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=546856349]
 
 [node name="AsikMeter" type="ProgressBar" parent="CanvasLayer" unique_id=1661396794]
+custom_minimum_size = Vector2(400, 128)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -324.5
 offset_right = 324.5
-offset_bottom = 40.0
+offset_bottom = 128.0
 grow_horizontal = 2
 max_value = 27.0
+
+[node name="EndResult" type="Control" parent="CanvasLayer" unique_id=999621355]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/EndResult" unique_id=775850097]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Board" type="TextureRect" parent="CanvasLayer/EndResult" unique_id=1978047951]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.943
+anchor_top = 0.5
+anchor_right = 0.943
+anchor_bottom = 0.5
+offset_left = -1002.56006
+offset_top = -412.0
+offset_right = -0.5600586
+offset_bottom = 454.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("4_dinhu")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="LabelContainer" type="VBoxContainer" parent="CanvasLayer/EndResult/Board" unique_id=1922247026]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.4731247
+anchor_right = 0.5
+anchor_bottom = 0.4488753
+offset_left = -177.0
+offset_top = -266.226
+offset_right = 178.0
+offset_bottom = 266.774
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Wibu" type="Label" parent="CanvasLayer/EndResult/Board/LabelContainer" unique_id=1014883903]
+custom_minimum_size = Vector2(355, 125)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_kvuet")
+theme_override_font_sizes/font_size = 32
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Nerd" type="Label" parent="CanvasLayer/EndResult/Board/LabelContainer" unique_id=527192084]
+custom_minimum_size = Vector2(355, 125)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_kvuet")
+theme_override_font_sizes/font_size = 32
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Gaul" type="Label" parent="CanvasLayer/EndResult/Board/LabelContainer" unique_id=1194801780]
+custom_minimum_size = Vector2(355, 125)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_kvuet")
+theme_override_font_sizes/font_size = 32
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Preman" type="Label" parent="CanvasLayer/EndResult/Board/LabelContainer" unique_id=1956860003]
+custom_minimum_size = Vector2(355, 125)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_kvuet")
+theme_override_font_sizes/font_size = 32
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Conclution" type="Label" parent="CanvasLayer/EndResult/Board" unique_id=2025357165]
+custom_minimum_size = Vector2(355, 125)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -353.0
+offset_top = -156.0
+offset_right = 354.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_kvuet")
+theme_override_font_sizes/font_size = 32
+text = "*Muncul kalo udah ngobrol sama semua orang*"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Buttons" type="VBoxContainer" parent="CanvasLayer/EndResult" unique_id=867676094]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.12100001
+anchor_top = 0.5
+anchor_right = 0.12100001
+anchor_bottom = 0.5
+offset_left = -0.32000732
+offset_top = -540.0
+offset_right = 399.68
+offset_bottom = 541.0
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Restart" type="TextureButton" parent="CanvasLayer/EndResult/Buttons" unique_id=1120539683]
+custom_minimum_size = Vector2(400, 128)
+layout_mode = 2
+texture_normal = ExtResource("6_ca42v")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="BackMainMenu" type="TextureButton" parent="CanvasLayer/EndResult/Buttons" unique_id=81778876]
+custom_minimum_size = Vector2(400, 128)
+layout_mode = 2
+texture_normal = ExtResource("7_rysoc")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Exit" type="TextureButton" parent="CanvasLayer/EndResult/Buttons" unique_id=2018870092]
+custom_minimum_size = Vector2(400, 128)
+layout_mode = 2
+texture_normal = ExtResource("7_ir15t")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="npc" type="Node3D" parent="." unique_id=1179293326]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3592843, 0.9443294, 0.81919265)

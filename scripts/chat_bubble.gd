@@ -1,4 +1,4 @@
-extends Node3D
+class_name ChatBubble extends Node3D
 
 enum Speaker {
 	ZAKI, NERD, PREMAN, GAUL, WIBU
@@ -224,6 +224,7 @@ func _on_choosing_option(_cam: Node, event: InputEvent, _event_pos: Vector3, _no
 		var emo: Emotion = _options.get_child(btn_index).get_meta("emo")
 		var weight : int = _check_option_weight(emo)
 		assert(weight != 0)
+		_game.set_report_circle(_npc, weight)
 		_game.increase_asik_meter(weight)
 		
 		# set mask
