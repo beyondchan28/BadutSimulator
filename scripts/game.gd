@@ -14,7 +14,7 @@ func increase_dialogue_done() -> void:
 	if _dialogue_done_count == _MAX_DIALOGUE_DONE_TO_END:
 		print("[INFO] Game done")
 
-func increase_asik_meter(weight: float) -> void:
+func increase_asik_meter(weight: int) -> void:
 	# bobotnya 3 (benar), 2, 1
 	var tween := self.create_tween()
 	tween.tween_property(_asik_meter_ui, "value", _asik_meter + weight, 0.3)

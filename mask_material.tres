@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bbbobw10yiefy"]
+
+[ext_resource type="Texture2D" uid="uid://c2ej5l1gddbbm" path="res://assets/model/npc/NPC_Mask.png" id="1_1pwjx"]
+
+[resource]
+resource_local_to_scene = true
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+disable_specular_occlusion = true
+albedo_texture = ExtResource("1_1pwjx")

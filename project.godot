@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="BadutKelasSimulator"
-run/main_scene="uid://c1mxv30hs6oe8"
+run/main_scene="uid://cq7agaekwguul"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
