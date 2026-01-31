@@ -1,0 +1,187 @@
+[gd_scene format=3 uid="uid://c1mxv30hs6oe8"]
+
+[ext_resource type="Texture2D" uid="uid://brfq1wkm7npe4" path="res://icon.svg" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://w0jl7pxjngnb" path="res://scripts/main_menu.gd" id="1_oa1go"]
+[ext_resource type="Texture2D" uid="uid://dppj404ck43pm" path="res://assets/user_interfaces/PlayButton.png" id="2_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://vwa5ee2bi552" path="res://assets/user_interfaces/HTPButton.png" id="3_wu84c"]
+[ext_resource type="Texture2D" uid="uid://p6hwe1wk83ny" path="res://assets/user_interfaces/ExitButton.png" id="4_8ln24"]
+[ext_resource type="Texture2D" uid="uid://3lbtku6i014d" path="res://assets/user_interfaces/htpPanel.png" id="5_8ln24"]
+[ext_resource type="FontFile" uid="uid://dyjc5i8gtevsh" path="res://assets/fFaedahnya.ttf" id="6_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://dpsedb03txkv1" path="res://assets/user_interfaces/BackButton.png" id="8_tbmy8"]
+
+[node name="MainMenu" type="Control" unique_id=2058767363]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oa1go")
+
+[node name="Background" type="ColorRect" parent="." unique_id=16109222]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LogoAndButtons" type="Control" parent="." unique_id=247166181]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Logo" type="TextureRect" parent="LogoAndButtons" unique_id=998144314]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.30100003
+anchor_right = 0.5
+anchor_bottom = 0.30100003
+offset_left = -64.0
+offset_top = -64.048035
+offset_right = 64.0
+offset_bottom = 63.951965
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_l6cm7")
+
+[node name="Buttons" type="Control" parent="LogoAndButtons" unique_id=232597347]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -64.0
+offset_right = 250.0
+offset_bottom = 371.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="TextureButton" parent="LogoAndButtons/Buttons" unique_id=262730407]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_right = 200.0
+offset_bottom = 128.0
+grow_horizontal = 2
+texture_normal = ExtResource("2_ekxnf")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="HowToPlay" type="TextureButton" parent="LogoAndButtons/Buttons" unique_id=770797564]
+custom_minimum_size = Vector2(500, 128)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -64.0
+offset_right = 250.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_wu84c")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Exit" type="TextureButton" parent="LogoAndButtons/Buttons" unique_id=358093405]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -128.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("4_8ln24")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="HowToPlay" type="TextureRect" parent="." unique_id=551140467]
+visible = false
+custom_minimum_size = Vector2(800, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -529.0
+offset_top = -302.0
+offset_right = 529.0
+offset_bottom = 287.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_8ln24")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Title" type="Label" parent="HowToPlay" unique_id=53371065]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.074
+anchor_right = 0.5
+anchor_bottom = 0.074
+offset_left = -188.0
+offset_top = 0.355999
+offset_right = 188.0
+offset_bottom = 88.356
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_rtw2f")
+theme_override_font_sizes/font_size = 64
+text = "How To Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="HowToPlay" unique_id=1383406146]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -472.0
+offset_top = -109.0
+offset_right = 472.0
+offset_bottom = 193.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_rtw2f")
+theme_override_font_sizes/font_size = 32
+text = "asdasdasdijausdhaishdaiusdhaiushfiaushfiudshifushdfisjdfisjdifsjdifsjdifusjoaisjdoa oasijdaosijdaosidj aosidj aosidij asoidij asoidij aosdj asoidij asodji
+asdasdasdijausdhaishdaiusdhaiushfiaushfiudshifushdfisjdfisjdifsjdifsjdifusjoaisjdoa oasijdaosijdaosidj aosidj aosidij asoidij asoidij aosdj asoidij asodji
+asdasdasdijausdhaishdaiusdhaiushfiaushfiudshifushdfisjdfisjdifsjdifsjdifusjoaisjdoa oasijdaosijdaosidj aosidj aosidij asoidij asoidij aosdj asoidij asodji"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Back" type="TextureButton" parent="." unique_id=2090368328]
+custom_minimum_size = Vector2(400, 128)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.022000002
+anchor_top = 0.029000001
+anchor_right = 0.022000002
+anchor_bottom = 0.029000001
+offset_left = 0.7599983
+offset_top = -0.3200016
+offset_right = 400.76
+offset_bottom = 127.68
+texture_normal = ExtResource("8_tbmy8")
+ignore_texture_size = true
+stretch_mode = 0
