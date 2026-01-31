@@ -1,4 +1,4 @@
-extends CharacterBody3D
+class_name Player extends CharacterBody3D
 
 
 @export var speed := 5.0
@@ -11,7 +11,7 @@ var camera_x_rotation := 0.0
 @onready var camera: Camera3D = $Camera3D
 
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	set_activation(true)
 
 func _physics_process(delta):
 	# Apply gravity
@@ -49,13 +49,19 @@ func _input(event: InputEvent) -> void:
 		camera_x_rotation = clamp(camera_x_rotation, deg_to_rad(-90), deg_to_rad(90))
 		camera.rotation.x = camera_x_rotation
 
+func set_activation(b: bool) -> void:
+	if b == false:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+		self.set_physics_process(false)
+		self.set_process_input(false)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		self.set_process_input(true)
+		self.set_physics_process(true)
+
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("ui_cancel"):
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-			self.set_physics_process(false)
-			self.set_process_input(false)
+			set_activation(false)
 		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			self.set_process_input(true)
-			self.set_physics_process(true)
+			set_activation(true)
