@@ -52,6 +52,35 @@ func _setup_option_data() -> void:
 				Emotion.SMILE,
 				Emotion.BIG_SMILE
 			])
+		Speaker.NERD:
+			_emotion_option_order.append([
+				Emotion.STRAIGHT_FACE,
+				Emotion.SURPRISE,
+				Emotion.MOCKING
+			])
+		Speaker.GAUL:
+			_emotion_option_order.append([
+				Emotion.CRY,
+				Emotion.AMAZE,
+				Emotion.WINK
+			])
+			_emotion_option_order.append([
+				Emotion.HUMBLE,
+				Emotion.LAUGH,
+				Emotion.BIG_SMILE
+			])
+		Speaker.PREMAN:
+			_emotion_option_order.append([
+				Emotion.TONGUE_TIED,
+				Emotion.CRY,
+				Emotion.FACE_SCREAMING
+			])
+			_emotion_option_order.append([
+				Emotion.SMILE,
+				Emotion.BIG_SMILE,
+				Emotion.SARCASTIC
+			])
+
 
 func _check_option_weight(emo: Emotion) -> int:
 	match _npc:
@@ -73,6 +102,68 @@ func _check_option_weight(emo: Emotion) -> int:
 					Emotion.SMILE:
 						return 2
 					Emotion.BIG_SMILE:
+						return 1
+					_:
+						return 0
+			else:
+				return 0
+			
+		Speaker.NERD:
+			if _emotion_order_index - 1 == 0:
+				match emo:
+					Emotion.STRAIGHT_FACE:
+						return 2
+					Emotion.SURPRISE:
+						return 1
+					Emotion.MOCKING:
+						return 3
+					_:
+						return 0
+			else:
+				return 0
+		
+		Speaker.GAUL:
+			if _emotion_order_index - 1 == 0:
+				match emo:
+					Emotion.CRY:
+						return 2
+					Emotion.WINK:
+						return 1
+					Emotion.AMAZE:
+						return 3
+					_:
+						return 0
+			elif _emotion_order_index - 1 == 1:
+				match emo:
+					Emotion.HUMBLE:
+						return 3
+					Emotion.LAUGH:
+						return 2
+					Emotion.BIG_SMILE:
+						return 1
+					_:
+						return 0
+			else:
+				return 0
+		
+		Speaker.PREMAN:
+			if _emotion_order_index - 1 == 0:
+				match emo:
+					Emotion.TONGUE_TIED:
+						return 2
+					Emotion.CRY:
+						return 1
+					Emotion.FACE_SCREAMING:
+						return 3
+					_:
+						return 0
+			elif _emotion_order_index - 1 == 1:
+				match emo:
+					Emotion.BIG_SMILE:
+						return 3
+					Emotion.SMILE:
+						return 2
+					Emotion.SARCASTIC:
 						return 1
 					_:
 						return 0
@@ -124,6 +215,7 @@ func _on_choosing_option(_cam: Node, event: InputEvent, _event_pos: Vector3, _no
 		# check wieght
 		var emo: Emotion = _options.get_child(btn_index).get_meta("emo")
 		var weight : int = _check_option_weight(emo)
+		assert(weight != 0)
 		_game.increase_asik_meter(weight)
 		
 		# set mask
