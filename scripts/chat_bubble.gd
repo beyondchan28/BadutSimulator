@@ -9,6 +9,14 @@ enum Emotion {
 	SMILE, HAPPY, LAUGH, CRY, SURPRISE, WINK, STRAIGHT_FACE, TONGUE_TIED,
 }
 
+var _dialogue_texture: Dictionary[Speaker, CompressedTexture2D] = {
+	Speaker.ZAKI : preload("res://assets/user_interfaces/BubbleMC.png"),
+	Speaker.NERD : preload("res://assets/user_interfaces/BubbleNerd.png"),
+	Speaker.WIBU : preload("res://assets/user_interfaces/BubbleWibu.png"),
+	Speaker.PREMAN : preload("res://assets/user_interfaces/BubblePreman.png"),
+	Speaker.GAUL : preload("res://assets/user_interfaces/BubbleGaul.png"),
+}
+
 @export var _emotion_show_index :Array[int]
 @export var _speaker_order: Array[Speaker]
 
@@ -237,6 +245,8 @@ func _change_dialogue() -> void:
 	
 	var current_speaker: Speaker = _speaker_order[_speaker_order_index]
 	var data_key: String = (Speaker.keys()[current_speaker] as String).to_upper()
+	
+	(_background.get_surface_override_material(0) as StandardMaterial3D).albedo_texture = _dialogue_texture[current_speaker]
 	
 	# Set position and label text
 	if current_speaker == Speaker.ZAKI:
