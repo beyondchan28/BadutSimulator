@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2kbdcq6wfkbp"
-path="res://.godot/imported/1F60F.png-cf436cf2b9fea5df74cf3732005e9f4f.ctex"
+uid="uid://c41h53occqau1"
+path="res://.godot/imported/amaze.png-ee6972a6e8bf1346ce5ae8e76917b12e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/1F60F.png"
-dest_files=["res://.godot/imported/1F60F.png-cf436cf2b9fea5df74cf3732005e9f4f.ctex"]
+source_file="res://assets/emoticons/amaze.png"
+dest_files=["res://.godot/imported/amaze.png-ee6972a6e8bf1346ce5ae8e76917b12e.ctex"]
 
 [params]
 

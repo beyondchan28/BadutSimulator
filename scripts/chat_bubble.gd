@@ -22,8 +22,10 @@ enum Emotion {
 @onready var _options: Node3D = $Options
 
 @export var _npc: Speaker
-var _data: Dictionary
+var _emotion_option_order: Array[Array]
+var _emotion_order_index := 0
 
+var _data: Dictionary
 var _speaker_order_index: int = 0
 var _npc_dialogue_index : int = 0
 var _main_dialogue_index : int = 0
@@ -37,7 +39,19 @@ func _load_dialogue_data() -> void:
 	print(_data)
 
 func _setup_option_data() -> void:
-	pass
+	match _npc:
+		Speaker.WIBU:
+			_emotion_option_order.append([
+				Emotion.SARCASTIC,
+				Emotion.AMAZE,
+				Emotion.EXCITED
+			])
+			_emotion_option_order.append([
+				Emotion.SARCASTIC,
+				Emotion.AMAZE,
+				Emotion.EXCITED
+			])
+	
 
 func _ready() -> void:
 	_starter_area.area_entered.connect(_on_area_entered_starter_area, CONNECT_ONE_SHOT)
@@ -47,10 +61,23 @@ func _ready() -> void:
 	_setup_option_data()
 	_load_dialogue_data()
 
+func _load_emotion_texture() -> void:
+	var folder_path = "res://assets/emoticons/"
+	for i: int in range(3):
+		var input_area: Area3D = _options.get_child(i)
+		var emotion: Emotion = _emotion_option_order[_emotion_order_index][i]
+		var emotion_as_string: String = (Emotion.keys()[emotion] as String).to_lower()
+		print(emotion_as_string)
+		var texture: CompressedTexture2D = load(folder_path + emotion_as_string + ".png")
+		((input_area.get_child(1) as MeshInstance3D).get_surface_override_material(0) as StandardMaterial3D).albedo_texture = texture
+	_emotion_order_index += 1
+
 func _on_area_entered_starter_area(area: Area3D) -> void:
 	if area.name == "PlayerStarterArea":
 		_next_dialogue_button.input_event.connect(_on_click_background)
 		_change_dialogue()
+		_player.camera.set_current(false)
+		$Camera3D.set_current(true)
 		_player.set_activation(false)
 
 func _check_option() -> void:
@@ -58,10 +85,16 @@ func _check_option() -> void:
 		for input_area: Area3D in _options.get_children():
 			input_area.input_event.connect(_on_choosing_option.bind(input_area.get_index()))
 		_set_dialogue_next_button_disabled(true)
+		_load_emotion_texture()
 		_options.show()
 func _on_choosing_option(_cam: Node, event: InputEvent, _event_pos: Vector3, _normal: Vector3, _shape_idx: int, btn_index: int) -> void:
 	if event is InputEventMouseButton and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT:
-		print(btn_index)
+		
+		# set mask
+		var option_input_visual: MeshInstance3D = _options.get_child(btn_index).get_child(1)
+		var texture: CompressedTexture2D = (option_input_visual.get_surface_override_material(0) as StandardMaterial3D).albedo_texture
+		_player.set_mask(texture)
+		
 		for input_area: Area3D in _options.get_children():
 			input_area.input_event.disconnect(_on_choosing_option)
 		_options.hide()
@@ -100,8 +133,12 @@ func _change_dialogue() -> void:
 		_next_dialogue_button.input_event.disconnect(_on_click_background)
 		await self.get_tree().create_timer(3.0).timeout
 		_background.hide()
+		_player.camera.set_current(true)
+		$Camera3D.set_current(false)
 		_player.set_activation(true)
+		_player.set_mask(null)
 		print("[INFO] Dialogue is finished")
+		self.queue_free()
 
 func _set_dialogue_next_button_disabled(b: bool) -> void:
 	(_next_dialogue_button.get_child(0) as CollisionShape3D).disabled = b

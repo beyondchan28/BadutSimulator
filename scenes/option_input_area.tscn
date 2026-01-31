@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://d3y6e0560tpc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f8oay"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xftsg"]
+size = Vector2(1, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w8qhn"]
+load_path = "res://.godot/imported/1F60E.png-20b61b91ce7efb5d30b2b5eb16d967e4.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dx5fm"]
+resource_local_to_scene = true
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+disable_specular_occlusion = true
+albedo_texture = SubResource("CompressedTexture2D_w8qhn")
+
+[node name="OptionInputArea" type="Area3D" unique_id=1447755989]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1723552993]
+shape = SubResource("BoxShape3D_f8oay")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1884734411]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.00020217896, 0.006071329, -0.0017461777)
+mesh = SubResource("PlaneMesh_xftsg")
+surface_material_override/0 = SubResource("StandardMaterial3D_dx5fm")

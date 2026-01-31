@@ -2,6 +2,17 @@
 
 [ext_resource type="Script" uid="uid://ce3e05w6pcwhw" path="res://scripts/player.gd" id="1_4flbx"]
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_3vyb7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g2els"]
+resource_local_to_scene = true
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+disable_specular_occlusion = true
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fc0e3"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_4flbx"]
@@ -11,11 +22,16 @@
 [node name="Player" type="CharacterBody3D" unique_id=1449521604]
 script = ExtResource("1_4flbx")
 
+[node name="Mask" type="MeshInstance3D" parent="." unique_id=1920563374]
+transform = Transform3D(-1, 0, 8.742278e-08, -8.742278e-08, -4.371139e-08, -1, 3.821371e-15, -1, 4.371139e-08, 0, 0.54845476, -0.5236226)
+mesh = SubResource("PlaneMesh_3vyb7")
+surface_material_override/0 = SubResource("StandardMaterial3D_g2els")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=803945054]
 shape = SubResource("CapsuleShape3D_fc0e3")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=274128284]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6300975, -0.29118198)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6300975, -0.5273182)
 current = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=280767820]

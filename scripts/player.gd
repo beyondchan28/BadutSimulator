@@ -11,6 +11,7 @@ var camera_x_rotation := 0.0
 @onready var camera: Camera3D = $Camera3D
 
 func _ready() -> void:
+	$Mask.hide()
 	set_activation(true)
 
 func _physics_process(delta):
@@ -58,6 +59,13 @@ func set_activation(b: bool) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		self.set_process_input(true)
 		self.set_physics_process(true)
+
+func set_mask(texture) -> void: # compressed2d or null
+	if texture == null:
+		$Mask.hide()
+	else:
+		$Mask.show()
+	($Mask.get_surface_override_material(0) as StandardMaterial3D).albedo_texture = texture
 
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("ui_cancel"):
