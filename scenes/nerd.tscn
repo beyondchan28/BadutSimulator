@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://d2bc16eiti5ns"]
+
+[ext_resource type="PackedScene" uid="uid://digrc4x0bal2q" path="res://assets/model/nerd/Anak Pintar new rigg.gltf" id="1_r4ywl"]
+
+[node name="Nerd" unique_id=891127541 instance=ExtResource("1_r4ywl")]
+
+[node name="Skeleton3D" parent="metarig" parent_id_path=PackedInt32Array(911380895) index="0" unique_id=861116498]
+bones/3/rotation = Quaternion(0.06100414, -0.15361387, 0.00611872, 0.9862271)
+bones/15/rotation = Quaternion(-2.5676103e-08, 0.6969362, 0.7171332, -3.6549732e-08)
+bones/16/rotation = Quaternion(-2.5676103e-08, 0.6969362, 0.7171332, -3.6549732e-08)
+bones/27/rotation = Quaternion(3.169768e-08, 0.89910114, -0.43774098, -2.8224264e-07)
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=147550762]
+autoplay = &"metarigAction"

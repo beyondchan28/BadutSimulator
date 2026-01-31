@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bphkep7aderf2"]
+
+[ext_resource type="PackedScene" uid="uid://cqdc5wubrlnvm" path="res://assets/model/preman/preman.gltf" id="1_otbna"]
+
+[node name="Preman" unique_id=1645817201 instance=ExtResource("1_otbna")]
+
+[node name="Skeleton3D" parent="metarig" parent_id_path=PackedInt32Array(1390033269) index="0" unique_id=945292911]
+bones/3/rotation = Quaternion(0.06259188, 7.2488994e-12, 1.0461404e-08, 0.9980392)
+bones/22/rotation = Quaternion(-0.050154913, 0.90815604, -0.4156165, -8.293906e-06)
+bones/28/rotation = Quaternion(-0.5990871, 0.66999453, -0.30911118, -0.31088957)
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=287106087]
+autoplay = &"metarigAction"

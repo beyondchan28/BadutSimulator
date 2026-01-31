@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dhrmmf7ifdhx7"]
+
+[ext_resource type="Texture2D" uid="uid://bprp2manyjhl7" path="res://assets/model/wibu/KAIN.png" id="1_camvx"]
+
+[resource]
+resource_name = "KAIN"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_camvx")

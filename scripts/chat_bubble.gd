@@ -24,11 +24,12 @@ var _dialogue_texture: Dictionary[Speaker, CompressedTexture2D] = {
 
 @onready var _label: Label3D = $Background/Label3D
 @onready var _background: MeshInstance3D = $Background
-@onready var _next_dialogue_button: Area3D = $Background/InputArea
+@onready var _next_dialogue_button: Area3D = $Background/NextDialogueArea
 @onready var _starter_area: Area3D = $StarterArea
 @onready var _options: Node3D = $Options
 @onready var  _game: Game = $"../"
 
+@export var _player_chat_rotation: Vector3
 
 @export var _npc: Speaker
 var _emotion_option_order: Array[Array]
@@ -195,30 +196,34 @@ func _load_emotion_texture() -> void:
 		var input_area: Area3D = _options.get_child(i)
 		var emotion: Emotion = _emotion_option_order[_emotion_order_index][i]
 		var emotion_as_string: String = (Emotion.keys()[emotion] as String).to_lower()
-		print(emotion_as_string)
 		input_area.set_meta("emo", emotion)
 		var texture: CompressedTexture2D = load(folder_path + emotion_as_string + ".png")
 		((input_area.get_child(1) as MeshInstance3D).get_surface_override_material(0) as StandardMaterial3D).albedo_texture = texture
 	_emotion_order_index += 1
 
 func _on_area_entered_starter_area(area: Area3D) -> void:
-	print(area.name)
 	if area.name == "PlayerStarterArea":
 		_next_dialogue_button.input_event.connect(_on_click_background)
+		_player.rotation_degrees = _player_chat_rotation
 		_change_dialogue()
 		_player.camera.set_current(false)
 		$Camera3D.set_current(true)
 		_player.set_activation(false)
 
 func _check_option() -> void:
+	if _emotion_order_index >= _emotion_option_order.size():
+		return
+	
 	if _main_dialogue_index in _emotion_show_index:
-		for input_area: Area3D in _options.get_children():
-			input_area.input_event.connect(_on_choosing_option.bind(input_area.get_index()))
-		_set_dialogue_next_button_disabled(true)
+		_set_dialogue_next_button_disabled(false)
 		_load_emotion_texture()
 		_options.show()
+		for input_area: Area3D in _options.get_children():
+			input_area.input_event.connect(_on_choosing_option.bind(input_area.get_index()))
 func _on_choosing_option(_cam: Node, event: InputEvent, _event_pos: Vector3, _normal: Vector3, _shape_idx: int, btn_index: int) -> void:
-	if event is InputEventMouseButton and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT:
+	if event is InputEventMouseButton and Input.is_action_just_pressed("click"):
+		for input_area: Area3D in _options.get_children():
+			input_area.input_event.disconnect(Callable(self, "_on_choosing_option"))
 		
 		# check wieght
 		var emo: Emotion = _options.get_child(btn_index).get_meta("emo")
@@ -232,15 +237,15 @@ func _on_choosing_option(_cam: Node, event: InputEvent, _event_pos: Vector3, _no
 		var texture: CompressedTexture2D = (option_input_visual.get_surface_override_material(0) as StandardMaterial3D).albedo_texture
 		_player.set_mask(texture)
 		
-		for input_area: Area3D in _options.get_children():
-			input_area.input_event.disconnect(_on_choosing_option)
 		_options.hide()
 		_change_dialogue()
-		_set_dialogue_next_button_disabled(false)
+		
+		_set_dialogue_next_button_disabled(true)
 
 func _on_click_background(_cam: Node, event: InputEvent, _event_pos: Vector3, _normal: Vector3, _shape_idx: int) -> void:
-	if event is InputEventMouseButton and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT:
+	if event is InputEventMouseButton and Input.is_action_just_pressed("click"):
 		_change_dialogue()
+		
 func _change_dialogue() -> void:
 	_background.hide()
 	
@@ -251,7 +256,7 @@ func _change_dialogue() -> void:
 	
 	# Set position and label text
 	if current_speaker == Speaker.ZAKI:
-		_check_option()
+		#_check_option()
 		_background.position = $A.position
 		_label.text = _data[data_key][_main_dialogue_index]
 		if _main_dialogue_index + 1 < _data[data_key].size():
@@ -266,10 +271,13 @@ func _change_dialogue() -> void:
 	
 	if _speaker_order_index + 1 < _speaker_order.size():
 		_speaker_order_index += 1
+		if current_speaker == Speaker.ZAKI:
+			_check_option()
 	
 	# when dialogue done
 	else:
-		_next_dialogue_button.input_event.disconnect(_on_click_background)
+		if _next_dialogue_button.is_connected("input_event", Callable(self, "_on_click_background")) :
+			_next_dialogue_button.input_event.disconnect(Callable(self, "_on_click_background"))
 		await self.get_tree().create_timer(3.0).timeout
 		_background.hide()
 		_player.camera.set_current(true)
@@ -281,4 +289,56 @@ func _change_dialogue() -> void:
 		self.queue_free()
 
 func _set_dialogue_next_button_disabled(b: bool) -> void:
-	(_next_dialogue_button.get_child(0) as CollisionShape3D).disabled = b
+	_next_dialogue_button.input_ray_pickable = b
+
+#@onready var camera: Camera3D = $Camera3D
+#
+#func get_areas_under_mouse_sorted(max_distance := 1000.0) -> Array:
+	#var camera := get_viewport().get_camera_3d()
+	#if camera == null:
+		#return []
+#
+	#var mouse_pos := get_viewport().get_mouse_position()
+#
+	#var ray_origin := camera.project_ray_origin(mouse_pos)
+	#var ray_dir := camera.project_ray_normal(mouse_pos)
+	#var ray_end := ray_origin + ray_dir * max_distance
+#
+	#var space_state := get_world_3d().direct_space_state
+#
+	#var query := PhysicsRayQueryParameters3D.create(ray_origin, ray_end)
+	#query.collide_with_bodies = false
+	#query.collide_with_areas = true
+#
+	## 👇 Only layer 3 (fast!)
+	#query.collision_mask = (1 << 3 - 1)
+#
+	#var hits := []
+	#var exclude := []
+#
+	## 🔁 Repeat raycasts to get multiple hits
+	#while true:
+		#query.exclude = exclude
+		#var result := space_state.intersect_ray(query)
+#
+		#if result.is_empty():
+			#break
+#
+		#var area :Area3D = result["collider"]
+		#if area is Area3D:
+			#hits.append(area)
+			#exclude.append(area)
+#
+	## 📏 Sort by distance to camera
+	#hits.sort_custom(func(a, b):
+		#return camera.global_position.distance_to(a.global_position) \
+			#< camera.global_position.distance_to(b.global_position)
+	#)
+#
+	#return hits
+#
+#func _input(event):
+	#if event is InputEventMouseButton and event.pressed:
+		#var areas := get_areas_under_mouse_sorted()
+		#if areas.size() > 0:
+			#print("Nearest Area:", areas[0].name)

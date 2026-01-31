@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://crv21u8tjhho4" path="res://assets/model/ruang_kelas/kayu meja.jpg" id="8_dinhu"]
 [ext_resource type="Texture2D" uid="uid://1gxnwuk0r4om" path="res://assets/model/ruang_kelas/kaca.png" id="9_kvuet"]
 [ext_resource type="Texture2D" uid="uid://dve7kv6glf0s" path="res://assets/model/ruang_kelas/kursi guru.png" id="10_trtic"]
-[ext_resource type="PackedScene" uid="uid://d06dfdg0ume5f" path="res://scenes/female_character.tscn" id="11_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://dsjtrlas1o5eq" path="res://scenes/gaul.tscn" id="16_ca42v"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vtaks"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -31,6 +31,24 @@ tonemap_mode = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mwb40"]
 size = Vector3(100, 1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ca42v"]
+resource_local_to_scene = true
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+disable_specular_occlusion = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rysoc"]
+resource_local_to_scene = true
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+disable_specular_occlusion = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lbhrr"]
 size = Vector2(0.5, 0.5)
@@ -3442,24 +3460,6 @@ data = PackedVector3Array(-0.6286, -0.084699996, -0.23889999, -0.60609996, -0.05
 [node name="Game" type="Node3D" unique_id=1136443421]
 script = ExtResource("1_lnu2h")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=320723402]
-environment = SubResource("Environment_dinhu")
-
-[node name="Ground" type="StaticBody3D" parent="." unique_id=527879678]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96118855, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1104163022]
-shape = SubResource("BoxShape3D_mwb40")
-
-[node name="Player" parent="." unique_id=1449521604 instance=ExtResource("1_80nbo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4999998, 2.7752042)
-
-[node name="ChatBubble" parent="." unique_id=769760397 instance=ExtResource("2_e2o6t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.346504, 1.271219, -1.4785551)
-_emotion_show_index = Array[int]([0, 2])
-_speaker_order = Array[int]([4, 0, 0, 4, 0, 4])
-_npc = 4
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=546856349]
 
 [node name="AsikMeter" type="ProgressBar" parent="CanvasLayer" unique_id=1661396794]
@@ -3510,7 +3510,7 @@ stretch_mode = 4
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.4731247
+anchor_top = 0.4488753
 anchor_right = 0.5
 anchor_bottom = 0.4488753
 offset_left = -177.0
@@ -3623,8 +3623,81 @@ texture_normal = ExtResource("7_ir15t")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=320723402]
+environment = SubResource("Environment_dinhu")
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=527879678]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96118855, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1104163022]
+shape = SubResource("BoxShape3D_mwb40")
+
+[node name="Player" parent="." unique_id=1449521604 instance=ExtResource("1_80nbo")]
+transform = Transform3D(-0.89324576, 0, 0.4495685, 0, 1, 0, -0.4495685, 0, -0.89324576, 5.84793, 1.8850572, 3.0731447)
+
+[node name="ChatBubble" parent="." unique_id=769760397 instance=ExtResource("2_e2o6t")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 9.80986, 1.271219, 4.019919)
+_emotion_show_index = Array[int]([0, 2])
+_speaker_order = Array[int]([4, 0, 0, 4, 0, 4])
+_player_chat_rotation = Vector3(0, 153.3, 0)
+_npc = 4
+
+[node name="Background" parent="ChatBubble" index="0" unique_id=1906216501]
+transform = Transform3D(0.89216834, 0.451703, 0, 1.9744565e-08, -3.8997918e-08, -1, -0.451703, 0.89216834, -4.371139e-08, 0, 2.88577, 3.871824e-08)
+surface_material_override/0 = SubResource("StandardMaterial3D_ca42v")
+
+[node name="A" parent="ChatBubble" index="1" unique_id=1065478678]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59275997, 3.2683816, 1.2463189)
+
+[node name="B" parent="ChatBubble" index="2" unique_id=1089420267]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.374332, 3.3330593, 0.7054167)
+
+[node name="Camera3D" parent="ChatBubble" index="3" unique_id=409625418]
+transform = Transform3D(0.94065, 9.313226e-10, 0.33937833, 0.015407063, 0.998969, -0.04270354, -0.3390284, 0.045397907, 0.93968016, 3.0734115, 2.8625383, 3.2183163)
+
+[node name="StarterArea" parent="ChatBubble" index="4" unique_id=1782216528]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.84575653, 0, -0.16882406)
+
+[node name="Options" parent="ChatBubble" index="5" unique_id=428158937]
+transform = Transform3D(0.9975261, 0, 0.070296206, 0, 1, 0, -0.070296206, 0, 0.9975261, 0.9098102, 5.18831, -0.5839518)
+
+[node name="ChatBubble2" parent="." unique_id=1864656896 instance=ExtResource("2_e2o6t")]
+transform = Transform3D(0.5135412, 0, -0.8580649, 0, 1, 0, 0.8580649, 0, 0.5135412, 0.93474007, 1.271219, 1.2964295)
+_emotion_show_index = Array[int]([0, 1])
+_speaker_order = Array[int]([3, 0, 3, 3, 0])
+_player_chat_rotation = Vector3(0, 26, 0)
+_npc = 3
+
+[node name="Background" parent="ChatBubble2" index="0" unique_id=1906216501]
+transform = Transform3D(0.95456827, -0.29799134, 1.3025617e-08, 8.7116365e-16, -4.371139e-08, -1, 0.29799134, 0.95456827, -4.172551e-08, -0.26538146, 3.406697, 0.44342005)
+surface_material_override/0 = SubResource("StandardMaterial3D_rysoc")
+
+[node name="A" parent="ChatBubble2" index="1" unique_id=1065478678]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0356705, 3.2989492, 1.1920929e-07)
+
+[node name="B" parent="ChatBubble2" index="2" unique_id=1089420267]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.22621214, 3.3835242, 0.4125396)
+
+[node name="Camera3D" parent="ChatBubble2" index="3" unique_id=409625418]
+transform = Transform3D(1, 0, -2.9802322e-08, 0, 0.93108773, 0.36479548, 0, -0.3647955, 0.9310877, -0.724721, 3.1576538, 3.2620528)
+
+[node name="StarterArea" parent="ChatBubble2" index="4" unique_id=1782216528]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0586824, 0, 2.0132012)
+
+[node name="MeshInstance3D" parent="ChatBubble2/StarterArea" index="1" unique_id=1466319807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44900036, 0, -0.26872098)
+
+[node name="Options" parent="ChatBubble2" index="5" unique_id=428158937]
+transform = Transform3D(0.86210716, 0, 0.506726, 0, 1, 0, -0.506726, 0, 0.86210716, -2.2523012, 3.2151644, 1.0556481)
+
+[node name="OptionInputArea2" parent="ChatBubble2/Options" index="1" unique_id=716177767]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.52306986, -1.0073538, 0)
+
+[node name="OptionInputArea3" parent="ChatBubble2/Options" index="2" unique_id=1218154816]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5990746, -0.9278779, -1.1920929e-07)
+
 [node name="npc" type="Node3D" parent="." unique_id=1179293326]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3592843, 0.9443294, 0.81919265)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0268908, 0.9443294, -7.542721)
 
 [node name="Mask" type="MeshInstance3D" parent="npc" unique_id=484762951]
 transform = Transform3D(1, -8.742278e-08, -8.742277e-08, -8.742278e-08, -4.371139e-08, -1, 8.742277e-08, 1, -4.3711395e-08, 0, 2.813645, 0.78745055)
@@ -3647,77 +3720,77 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(1, 0, 2.3841855e-07, 0, 1, 0, -2.3841855e-07, 0, 1, 0, 0.32428098, 0)
 bones/1/enabled = true
 bones/1/position = Vector3(0, 0.32428098, 0)
-bones/1/rotation = Quaternion(0.1395481, 1.1804285e-07, 1.6635427e-08, 0.9902153)
+bones/1/rotation = Quaternion(0, 1.19209275e-07, 0, 1)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Bone.002"
 bones/2/parent = 1
 bones/2/rest = Transform3D(1, 0, 2.842171e-14, 0, 1, 0, -2.842171e-14, 0, 1, 9.129797e-10, 0.6318095, -1.0569323e-13)
 bones/2/enabled = true
 bones/2/position = Vector3(9.129797e-10, 0.6318095, -1.0569323e-13)
-bones/2/rotation = Quaternion(0.12915814, 1.41069695e-14, 3.07937e-08, 0.991624)
+bones/2/rotation = Quaternion(0, 1.4210855e-14, 0, 1)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "Bone.003"
 bones/3/parent = 2
 bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.129799e-10, 0.38723826, -1.0658141e-13)
 bones/3/enabled = true
 bones/3/position = Vector3(9.129799e-10, 0.38723826, -1.0658141e-13)
-bones/3/rotation = Quaternion(-0.17757429, 4.5126095e-15, -4.233701e-08, 0.9841074)
+bones/3/rotation = Quaternion(0, 0, 0, 1)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "Bone.004"
 bones/4/parent = 2
 bones/4/rest = Transform3D(0, 1, -2.3841854e-07, -1, 0, -4.3711395e-08, -4.371138e-08, 2.3841855e-07, 1, 0.22917375, 0.2658596, 2.3904104e-07)
 bones/4/enabled = true
 bones/4/position = Vector3(0.22917375, 0.2658596, 2.3904104e-07)
-bones/4/rotation = Quaternion(0.69297296, -0.1365127, -0.48729247, 0.5135161)
+bones/4/rotation = Quaternion(9.9747986e-08, -6.883938e-08, -0.70710677, 0.70710677)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "Bone.005"
 bones/5/parent = 4
 bones/5/rest = Transform3D(1, -1.863529e-21, -7.1054274e-15, 1.8635287e-21, 1, -4.2632564e-14, 7.1054274e-15, 4.2632564e-14, 1, 5.0887206e-10, 0.48325264, -7.175696e-12)
 bones/5/enabled = true
 bones/5/position = Vector3(5.0887206e-10, 0.48325264, -7.175696e-12)
-bones/5/rotation = Quaternion(-0.212754, -0.13575308, 0.35569325, 0.89988285)
+bones/5/rotation = Quaternion(2.1316282e-14, -3.5527137e-15, 9.317644e-22, 1)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "Bone.010"
 bones/6/parent = 2
 bones/6/rest = Transform3D(0, -0.99999994, -2.3841858e-07, 0.99999994, 4.881136e-14, -2.047297e-07, 2.0472969e-07, -2.3841856e-07, 1, -0.23619518, 0.26585937, 1.2808844e-07)
 bones/6/enabled = true
 bones/6/position = Vector3(-0.23619518, 0.26585937, 1.2808844e-07)
-bones/6/rotation = Quaternion(0.74604017, 0.24015257, 0.43099996, 0.44720235)
+bones/6/rotation = Quaternion(-1.1910816e-08, -1.5667658e-07, 0.70710677, 0.70710677)
 bones/6/scale = Vector3(0.99999994, 0.99999994, 1)
 bones/7/name = "Bone.011"
 bones/7/parent = 6
 bones/7/rest = Transform3D(1, 2.4371053e-07, 1.9390072e-09, -2.4371053e-07, 1, 4.9422214e-14, -1.9390072e-09, -4.989477e-14, 1, 2.3603519e-07, 0.48325264, -6.128289e-10)
 bones/7/enabled = true
 bones/7/position = Vector3(2.3603519e-07, 0.48325264, -6.128289e-10)
-bones/7/rotation = Quaternion(-0.33217338, 0.08605298, -0.31891656, 0.8834863)
+bones/7/rotation = Quaternion(-2.4829246e-14, 9.695036e-10, -1.2185527e-07, 1)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/name = "Bone.006"
 bones/8/parent = 0
 bones/8/rest = Transform3D(0.67112154, -1.6651242e-07, -0.7413474, 2.1537694e-08, -1, 2.441053e-07, -0.7413474, -1.7979124e-07, -0.6711216, 0.32201913, 0.14085257, 1.0523945e-07)
 bones/8/enabled = true
-bones/8/position = Vector3(0.28461614, 0.14085259, 1.1049726e-07)
-bones/8/rotation = Quaternion(0.73026025, -0.24390416, -0.3239599, 0.5498007)
+bones/8/position = Vector3(0.32201913, 0.14085257, 1.0523945e-07)
+bones/8/rotation = Quaternion(0.91409016, -3.965001e-08, -0.4055111, -1.15934014e-07)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/name = "Bone.007"
 bones/9/parent = 8
 bones/9/rest = Transform3D(1, -2.1537703e-08, -2.0861626e-07, 2.1537753e-08, 1, 2.441053e-07, 2.0861626e-07, -2.441053e-07, 1, -5.7957417e-09, 0.6870621, -7.624934e-09)
 bones/9/enabled = true
 bones/9/position = Vector3(-5.7957417e-09, 0.6870621, -7.624934e-09)
-bones/9/rotation = Quaternion(0.46346515, -1.2361785e-07, -0.5119622, 0.7232529)
+bones/9/rotation = Quaternion(-1.2205265e-07, -1.0430813e-07, 1.0768863e-08, 1)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/name = "Bone.008"
 bones/10/parent = 0
 bones/10/rest = Transform3D(0.67112154, -9.402506e-08, -0.7413474, 9.402506e-08, -1, 2.1194829e-07, -0.7413474, -2.1194829e-07, -0.6711216, -0.32609528, 0.14085257, 1.0523945e-07)
 bones/10/enabled = true
-bones/10/position = Vector3(-0.27941602, 0.14085257, 1.1049726e-07)
-bones/10/rotation = Quaternion(0.7189489, -0.25043002, -0.31894198, 0.5645116)
+bones/10/position = Vector3(-0.32609528, 0.14085257, 1.0523945e-07)
+bones/10/rotation = Quaternion(0.91409016, 0, -0.4055111, -1.1593403e-07)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/name = "Bone.009"
 bones/11/parent = 10
 bones/11/rest = Transform3D(1, -9.402507e-08, -2.0861627e-07, 9.402511e-08, 1, 2.1194829e-07, 2.0861624e-07, -2.1194832e-07, 1, 8.1540463e-10, 0.68706197, 3.0041704e-08)
 bones/11/enabled = true
 bones/11/position = Vector3(8.1540463e-10, 0.68706197, 3.0041704e-08)
-bones/11/rotation = Quaternion(0.46022165, -1.0236605e-07, -0.50837904, 0.727837)
+bones/11/rotation = Quaternion(-1.0597415e-07, -1.0430813e-07, 4.7012545e-08, 1)
 bones/11/scale = Vector3(1, 1, 1)
 
 [node name="ArmL" type="MeshInstance3D" parent="npc/Employee/Skeleton3D" unique_id=495685156]
@@ -4492,5 +4565,8 @@ mesh = SubResource("ArrayMesh_sf8ms")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ruang kelas/Cube_033/StaticBody3D" unique_id=1985547464]
 shape = SubResource("ConcavePolygonShape3D_i1hsc")
 
-[node name="FemaleCharacter" parent="." unique_id=1667729603 instance=ExtResource("11_kvpfn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0521603, 0.9026017, 0)
+[node name="Gaul" parent="." unique_id=1156860534 instance=ExtResource("16_ca42v")]
+transform = Transform3D(0.02184233, 0.025422394, -0.99943817, -0.004701576, 0.9996682, 0.025325494, 0.9997503, 0.0041457647, 0.021954656, 0.44378924, 0.9034895, 1.20363)
+
+[editable path="ChatBubble"]
+[editable path="ChatBubble2"]

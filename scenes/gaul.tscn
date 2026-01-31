@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dsjtrlas1o5eq"]
+
+[ext_resource type="PackedScene" uid="uid://bfbek7smqy3mu" path="res://assets/model/gaul/gaul.gltf" id="1_0h6cv"]
+
+[node name="Gaul" unique_id=1156860534 instance=ExtResource("1_0h6cv")]
+
+[node name="Skeleton3D" parent="metarig" parent_id_path=PackedInt32Array(1532340479) index="0" unique_id=1684552610]
+bones/1/rotation = Quaternion(-0.17535271, 1.1736226e-07, -2.0903677e-08, 0.9845057)
+bones/2/rotation = Quaternion(-0.0064725587, -2.8643757e-14, -1.5431797e-09, 0.99997914)
+bones/3/rotation = Quaternion(0.04805358, -1.19071565e-07, 5.728436e-09, 0.99884474)
+bones/8/rotation = Quaternion(-0.3366014, 0.66562235, -0.5310587, 0.40202364)
+bones/9/rotation = Quaternion(0.64441144, -0.039528925, -0.041854516, 0.76250875)
+bones/10/rotation = Quaternion(-0.1416742, -0.012227334, -0.002170376, 0.9898355)
+bones/12/rotation = Quaternion(-0.3366014, -0.66562235, 0.5310588, 0.40202364)
+bones/13/rotation = Quaternion(0.64441144, 0.039528925, 0.041854497, 0.76250875)
+bones/14/rotation = Quaternion(-0.14167424, 0.01222733, 0.0021703783, 0.9898355)
+bones/15/rotation = Quaternion(-3.136721e-08, 0.69645745, 0.71759814, -3.0443115e-08)
+bones/16/rotation = Quaternion(-3.136721e-08, 0.69645745, 0.71759814, -3.0443115e-08)
+bones/19/rotation = Quaternion(0.97858214, 2.4540071e-08, 1.16656075e-07, 0.20585707)
+bones/20/rotation = Quaternion(0.025555532, -1.5598633e-14, 6.092877e-09, 0.9996734)
+bones/21/rotation = Quaternion(-0.37541163, 5.5245073e-07, -3.1326772e-07, 0.9268582)
+bones/22/rotation = Quaternion(2.1339147e-07, 0.9427322, -0.33355057, 7.454691e-07)
+bones/24/rotation = Quaternion(0.97858214, -2.4540071e-08, -1.16656075e-07, 0.20585707)
+bones/25/rotation = Quaternion(0.025555532, 1.5598633e-14, -6.092877e-09, 0.9996734)
+bones/26/rotation = Quaternion(-0.37541163, -5.5245073e-07, 3.1326772e-07, 0.9268582)
+bones/27/rotation = Quaternion(-2.1339147e-07, 0.9427322, -0.33355057, -7.454691e-07)
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=177167076]
+autoplay = &"default"

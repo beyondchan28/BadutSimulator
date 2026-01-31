@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://6ge1eopbvbnb"
-path="res://.godot/imported/perempuan new rigg.gltf-e9b49292e31a4ad097f70dcb7860cec7.scn"
+uid="uid://cqdc5wubrlnvm"
+path="res://.godot/imported/preman.gltf-921f245c5992d082ad7acd0250f5cc18.scn"
 
 [deps]
 
-source_file="res://assets/model/female/perempuan new rigg.gltf"
-dest_files=["res://.godot/imported/perempuan new rigg.gltf-e9b49292e31a4ad097f70dcb7860cec7.scn"]
+source_file="res://assets/model/preman/preman.gltf"
+dest_files=["res://.godot/imported/preman.gltf-921f245c5992d082ad7acd0250f5cc18.scn"]
 
 [params]
 
