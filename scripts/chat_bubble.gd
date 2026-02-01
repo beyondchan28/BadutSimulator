@@ -46,7 +46,7 @@ func _load_dialogue_data() -> void:
 	var file = FileAccess.open(data_path, FileAccess.READ)
 	var json_string = file.get_as_text() 
 	_data = JSON.parse_string(json_string)
-	print(_data)
+	#print(_data)
 
 func _setup_option_data() -> void:
 	match _npc:
@@ -205,6 +205,7 @@ func _on_area_entered_starter_area(area: Area3D) -> void:
 	if area.name == "PlayerStarterArea":
 		_next_dialogue_button.input_event.connect(_on_click_background)
 		_player.rotation_degrees = _player_chat_rotation
+		_player.set_animation("idleChat")
 		_change_dialogue()
 		_player.camera.set_current(false)
 		$Camera3D.set_current(true)
@@ -284,6 +285,7 @@ func _change_dialogue() -> void:
 		$Camera3D.set_current(false)
 		_player.set_activation(true)
 		_player.set_mask(null)
+		_player.set_animation("idleStand")
 		_game.increase_dialogue_done()
 		print("[INFO] Dialogue is finished")
 		self.queue_free()

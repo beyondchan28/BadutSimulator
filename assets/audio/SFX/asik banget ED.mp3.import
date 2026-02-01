@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dksdolxfp0cad"
+path="res://.godot/imported/asik banget ED.mp3-e3001dedb4e5bbd2018ba9a0a9a01369.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/SFX/asik banget ED.mp3"
+dest_files=["res://.godot/imported/asik banget ED.mp3-e3001dedb4e5bbd2018ba9a0a9a01369.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -47,7 +47,7 @@ func _input(event: InputEvent) -> void:
 
 		# Rotate camera up/down
 		camera_x_rotation -= event.relative.y * mouse_sensitivity
-		camera_x_rotation = clamp(camera_x_rotation, deg_to_rad(-90), deg_to_rad(90))
+		camera_x_rotation = clamp(camera_x_rotation, deg_to_rad(-45), deg_to_rad(90))
 		camera.rotation.x = camera_x_rotation
 
 func set_activation(b: bool) -> void:
@@ -66,6 +66,9 @@ func set_mask(texture) -> void: # compressed2d or null
 	else:
 		$Mask.show()
 	($Mask.get_surface_override_material(0) as StandardMaterial3D).albedo_texture = texture
+
+func set_animation(name: String) -> void:
+	$zaki/AnimationPlayer.play(name)
 
 #func _unhandled_input(_event):
 	#if Input.is_action_just_pressed("ui_cancel"):

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cowp2lwnachlu"]
+
+[ext_resource type="Texture2D" uid="uid://hak18q2ro24t" path="res://assets/model/zaki/KAIN.png" id="1_1uvkn"]
+
+[resource]
+resource_name = "KAIN"
+cull_mode = 2
+albedo_texture = ExtResource("1_1uvkn")
+roughness = 0.5

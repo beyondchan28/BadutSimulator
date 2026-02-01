@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://7alhg470rivx"
+path="res://.godot/imported/Biasa aja ED.mp3-f2a7af216553fbea4d92afbf9d14f00e.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/SFX/Biasa aja ED.mp3"
+dest_files=["res://.godot/imported/Biasa aja ED.mp3-f2a7af216553fbea4d92afbf9d14f00e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

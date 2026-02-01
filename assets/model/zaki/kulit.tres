@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ntb0avuecmld"]
+
+[ext_resource type="Texture2D" uid="uid://bm7pg5ip1rmjv" path="res://assets/model/zaki/kulit.jpg.jpg" id="1_do4v6"]
+
+[resource]
+resource_name = "kulit"
+cull_mode = 2
+albedo_texture = ExtResource("1_do4v6")
+roughness = 0.5
