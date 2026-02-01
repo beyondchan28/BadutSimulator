@@ -1,13 +1,21 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://bbbobw10yiefy"]
 
-[ext_resource type="Texture2D" uid="uid://c2ej5l1gddbbm" path="res://assets/model/npc/NPC_Mask.png" id="1_1pwjx"]
+[ext_resource type="Shader" uid="uid://cabhh45l6q74c" path="res://scripts/highlight.gdshader" id="2_u17ib"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bm60m"]
+render_priority = 0
+shader = ExtResource("2_u17ib")
+shader_parameter/color = Color(0.3, 0.9, 1, 0.7)
+shader_parameter/edge_softness = 0.00999999977648
+shader_parameter/pulse_speed = 10.0
+shader_parameter/pulse_strength = 0.25
 
 [resource]
 resource_local_to_scene = true
+next_pass = SubResource("ShaderMaterial_bm60m")
 transparency = 1
 cull_mode = 2
 shading_mode = 0
 disable_ambient_light = true
 disable_fog = true
 disable_specular_occlusion = true
-albedo_texture = ExtResource("1_1pwjx")

@@ -256,7 +256,7 @@ func _change_dialogue() -> void:
 	
 	# Set position and label text
 	if current_speaker == Speaker.ZAKI:
-		#_check_option()
+		_check_option()
 		_background.position = $A.position
 		_label.text = _data[data_key][_main_dialogue_index]
 		if _main_dialogue_index + 1 < _data[data_key].size():
@@ -271,8 +271,8 @@ func _change_dialogue() -> void:
 	
 	if _speaker_order_index + 1 < _speaker_order.size():
 		_speaker_order_index += 1
-		if current_speaker == Speaker.ZAKI:
-			_check_option()
+		#if current_speaker == Speaker.ZAKI:
+			#_check_option()
 	
 	# when dialogue done
 	else:
@@ -290,55 +290,3 @@ func _change_dialogue() -> void:
 
 func _set_dialogue_next_button_disabled(b: bool) -> void:
 	_next_dialogue_button.input_ray_pickable = b
-
-#@onready var camera: Camera3D = $Camera3D
-#
-#func get_areas_under_mouse_sorted(max_distance := 1000.0) -> Array:
-	#var camera := get_viewport().get_camera_3d()
-	#if camera == null:
-		#return []
-#
-	#var mouse_pos := get_viewport().get_mouse_position()
-#
-	#var ray_origin := camera.project_ray_origin(mouse_pos)
-	#var ray_dir := camera.project_ray_normal(mouse_pos)
-	#var ray_end := ray_origin + ray_dir * max_distance
-#
-	#var space_state := get_world_3d().direct_space_state
-#
-	#var query := PhysicsRayQueryParameters3D.create(ray_origin, ray_end)
-	#query.collide_with_bodies = false
-	#query.collide_with_areas = true
-#
-	## 👇 Only layer 3 (fast!)
-	#query.collision_mask = (1 << 3 - 1)
-#
-	#var hits := []
-	#var exclude := []
-#
-	## 🔁 Repeat raycasts to get multiple hits
-	#while true:
-		#query.exclude = exclude
-		#var result := space_state.intersect_ray(query)
-#
-		#if result.is_empty():
-			#break
-#
-		#var area :Area3D = result["collider"]
-		#if area is Area3D:
-			#hits.append(area)
-			#exclude.append(area)
-#
-	## 📏 Sort by distance to camera
-	#hits.sort_custom(func(a, b):
-		#return camera.global_position.distance_to(a.global_position) \
-			#< camera.global_position.distance_to(b.global_position)
-	#)
-#
-	#return hits
-#
-#func _input(event):
-	#if event is InputEventMouseButton and event.pressed:
-		#var areas := get_areas_under_mouse_sorted()
-		#if areas.size() > 0:
-			#print("Nearest Area:", areas[0].name)

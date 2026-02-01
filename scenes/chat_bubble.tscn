@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cthwre6hsd6rv"]
 
 [ext_resource type="Script" uid="uid://dk6c6c0fhaics" path="res://scripts/chat_bubble.gd" id="1_udckb"]
+[ext_resource type="Shader" uid="uid://cabhh45l6q74c" path="res://scripts/highlight.gdshader" id="2_2gcjb"]
 [ext_resource type="PackedScene" uid="uid://d3y6e0560tpc" path="res://scenes/option_input_area.tscn" id="2_f8oay"]
 [ext_resource type="FontFile" uid="uid://dyjc5i8gtevsh" path="res://assets/fFaedahnya.ttf" id="2_xftsg"]
 
@@ -19,9 +20,38 @@ disable_specular_occlusion = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_udckb"]
 size = Vector3(3.0947266, 1, 1)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_fwy0m"]
+size = Vector2(4, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8q33v"]
+render_priority = 0
+shader = ExtResource("2_2gcjb")
+shader_parameter/color = Color(0.3, 0.9, 1, 0.7)
+shader_parameter/edge_softness = 0.00999999977648
+shader_parameter/pulse_speed = 10.0
+shader_parameter/pulse_strength = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qkuwi"]
+next_pass = SubResource("ShaderMaterial_8q33v")
+transparency = 1
+shading_mode = 0
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_qcqw1"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_qcqw1"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_2gcjb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gmev1"]
+render_priority = 0
+shader = ExtResource("2_2gcjb")
+shader_parameter/color = Color(0.91833335, 1, 0.3, 0.7019608)
+shader_parameter/edge_softness = 0.3
+shader_parameter/pulse_speed = 4.0
+shader_parameter/pulse_strength = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8q33v"]
+next_pass = SubResource("ShaderMaterial_gmev1")
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
 
 [node name="ChatBubble" type="Node3D" unique_id=769760397]
 script = ExtResource("1_udckb")
@@ -48,6 +78,11 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Background/NextDialogueArea" unique_id=3366774]
 shape = SubResource("BoxShape3D_udckb")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Background" unique_id=1600335542]
+transform = Transform3D(-1, 8.742278e-08, -3.821371e-15, -8.742278e-08, -1, 8.742278e-08, 3.821371e-15, 8.742278e-08, 1, 0, -0.06158161, 0)
+mesh = SubResource("PlaneMesh_fwy0m")
+surface_material_override/0 = SubResource("StandardMaterial3D_qkuwi")
+
 [node name="A" type="Marker3D" parent="." unique_id=1065478678]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)
 
@@ -67,7 +102,8 @@ monitorable = false
 shape = SubResource("BoxShape3D_qcqw1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StarterArea" unique_id=1466319807]
-mesh = SubResource("SphereMesh_qcqw1")
+mesh = SubResource("PlaneMesh_2gcjb")
+surface_material_override/0 = SubResource("StandardMaterial3D_8q33v")
 
 [node name="Options" type="Node3D" parent="." unique_id=428158937]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0463275, 3.173417, 0)

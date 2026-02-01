@@ -3,7 +3,7 @@ class_name Game extends Node3D
 const _MAX_DIALOGUE_DONE_TO_END: int = 4
 const _MAX_ASIK_VALUE :int = 3 * 7
 
-@onready var _asik_meter_ui: ProgressBar = $CanvasLayer/AsikMeter
+@onready var _asik_meter_ui: TextureProgressBar = $CanvasLayer/AsikMeter
 
 var _dialogue_done_count :int = 0
 var _asik_meter :int = 0
@@ -55,6 +55,7 @@ func increase_dialogue_done() -> void:
 	if _dialogue_done_count == _MAX_DIALOGUE_DONE_TO_END:
 		_set_report_conclusion()
 		$CanvasLayer/EndResult.show()
+		$Player.set_activation(false)
 		print("[INFO] Game done")
 
 func increase_asik_meter(weight: int) -> void:
