@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://xbwpdx2kbfd"]
+
+[ext_resource type="Texture2D" uid="uid://ley2qjksvryv" path="res://assets/model/nerd/KAIN.png" id="1_0g0bt"]
+
+[resource]
+resource_name = "KAIN"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_0g0bt")

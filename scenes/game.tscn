@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://1gxnwuk0r4om" path="res://assets/model/ruang_kelas/kaca.png" id="9_kvuet"]
 [ext_resource type="Texture2D" uid="uid://dve7kv6glf0s" path="res://assets/model/ruang_kelas/kursi guru.png" id="10_trtic"]
 [ext_resource type="PackedScene" uid="uid://dsjtrlas1o5eq" path="res://scenes/gaul.tscn" id="16_ca42v"]
+[ext_resource type="PackedScene" uid="uid://d2bc16eiti5ns" path="res://scenes/nerd.tscn" id="18_ssvqc"]
+[ext_resource type="PackedScene" uid="uid://cloc4k2a1u8qp" path="res://assets/model/wibu/wibu.gltf" id="19_1kice"]
+[ext_resource type="PackedScene" uid="uid://cqdc5wubrlnvm" path="res://assets/model/preman/preman.gltf" id="20_5newe"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vtaks"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -33,24 +36,6 @@ tonemap_mode = 1
 [sub_resource type="BoxShape3D" id="BoxShape3D_mwb40"]
 size = Vector3(100, 1, 100)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rysoc"]
-resource_local_to_scene = true
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-disable_ambient_light = true
-disable_fog = true
-disable_specular_occlusion = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ssvqc"]
-resource_local_to_scene = true
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-disable_ambient_light = true
-disable_fog = true
-disable_specular_occlusion = true
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_264po"]
 resource_local_to_scene = true
 transparency = 1
@@ -61,6 +46,24 @@ disable_fog = true
 disable_specular_occlusion = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1kice"]
+resource_local_to_scene = true
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+disable_specular_occlusion = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5newe"]
+resource_local_to_scene = true
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+disable_specular_occlusion = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_37s47"]
 resource_local_to_scene = true
 transparency = 1
 cull_mode = 2
@@ -3410,14 +3413,14 @@ _player_chat_rotation = Vector3(0, 153.3, 0)
 _npc = 4
 
 [node name="Background" parent="ChatBubble" index="0" unique_id=1906216501]
-transform = Transform3D(0.89216834, 0.451703, 0, 1.9744565e-08, -3.8997918e-08, -1, -0.451703, 0.89216834, -4.371139e-08, 0, 2.88577, 3.871824e-08)
-surface_material_override/0 = SubResource("StandardMaterial3D_rysoc")
+transform = Transform3D(0.97812945, 0.20799716, 1.1201294e-08, 1.9744563e-08, -3.8997914e-08, -1, -0.20799716, 0.97812945, -4.2251816e-08, 0.5984998, 2.8857696, -2.467661)
+surface_material_override/0 = SubResource("StandardMaterial3D_264po")
 
 [node name="A" parent="ChatBubble" index="1" unique_id=1065478678]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.59275997, 3.2683816, 1.2463189)
+transform = Transform3D(0.9961995, 0, -0.08710356, 0, 1, 0, 0.08710356, 0, 0.9961995, 0.28546143, 3.321232, -2.1165323)
 
 [node name="B" parent="ChatBubble" index="2" unique_id=1089420267]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.374332, 3.3330593, 0.7054167)
+transform = Transform3D(-0.48161608, 0, -0.87638235, 0, 1, 0, 0.87638235, 0, -0.48161608, 4.23938, 3.3330595, -0.59101295)
 
 [node name="Camera3D" parent="ChatBubble" index="3" unique_id=409625418]
 transform = Transform3D(0.94065, 9.313226e-10, 0.33937833, 0.015407063, 0.998969, -0.04270354, -0.3390284, 0.045397907, 0.93968016, 3.0734115, 2.8625383, 3.2183163)
@@ -3426,7 +3429,7 @@ transform = Transform3D(0.94065, 9.313226e-10, 0.33937833, 0.015407063, 0.998969
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.84575653, 0, -0.16882406)
 
 [node name="Options" parent="ChatBubble" index="5" unique_id=428158937]
-transform = Transform3D(0.9975261, 0, 0.070296206, 0, 1, 0, -0.070296206, 0, 0.9975261, 0.9098102, 5.18831, -0.5839518)
+transform = Transform3D(0.9975261, 0, 0.070296206, 0, 1, 0, -0.070296206, 0, 0.9975261, 0.90981007, 4.6084824, -0.58395195)
 
 [node name="ChatBubble2" parent="." unique_id=1864656896 instance=ExtResource("2_e2o6t")]
 transform = Transform3D(0.5135412, 0, -0.8580649, 0, 1, 0, 0.8580649, 0, 0.5135412, 0.93474007, 1.271219, 1.2964295)
@@ -3437,7 +3440,7 @@ _npc = 3
 
 [node name="Background" parent="ChatBubble2" index="0" unique_id=1906216501]
 transform = Transform3D(0.95456827, -0.29799134, 1.3025617e-08, 8.7116365e-16, -4.371139e-08, -1, 0.29799134, 0.95456827, -4.172551e-08, -0.26538146, 3.406697, 0.44342005)
-surface_material_override/0 = SubResource("StandardMaterial3D_ssvqc")
+surface_material_override/0 = SubResource("StandardMaterial3D_1kice")
 
 [node name="A" parent="ChatBubble2" index="1" unique_id=1065478678]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0356705, 3.2989492, 1.1920929e-07)
@@ -3471,17 +3474,17 @@ _player_chat_rotation = Vector3(0, -109.4, 0)
 _npc = 1
 
 [node name="Background" parent="ChatBubble3" index="0" unique_id=1906216501]
-transform = Transform3D(0.9344841, 0.35600397, -1.5561433e-08, -1.0353412e-15, -4.3711392e-08, -1, -0.35600397, 0.9344841, -4.08476e-08, -0.2653818, 3.406697, 0.44341993)
-surface_material_override/0 = SubResource("StandardMaterial3D_264po")
+transform = Transform3D(0.6828019, 0.7306035, -3.193571e-08, -2.3001214e-15, -4.371139e-08, -1, -0.7306035, 0.6828019, -2.9846227e-08, -0.5281029, 2.854388, 1.8718984)
+surface_material_override/0 = SubResource("StandardMaterial3D_5newe")
 
 [node name="A" parent="ChatBubble3" index="1" unique_id=1065478678]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0356705, 3.2989492, 1.1920929e-07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4351859, 2.8180764, 1.8018147)
 
 [node name="B" parent="ChatBubble3" index="2" unique_id=1089420267]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19083038, 2.8797214, 1.9206634)
 
 [node name="Camera3D" parent="ChatBubble3" index="3" unique_id=409625418]
-transform = Transform3D(0.9272558, -0.13658985, 0.34862587, 0, 0.93108773, 0.36479548, -0.3744286, -0.33825874, 0.86335653, 0.74336433, 3.157654, 3.9576051)
+transform = Transform3D(0.9272558, -0.13658987, 0.34862584, 0, 0.93108773, 0.3647955, -0.37442863, -0.33825877, 0.8633565, 1.4232852, 3.157654, 3.9839625)
 
 [node name="StarterArea" parent="ChatBubble3" index="4" unique_id=1782216528]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7370467, 0, 0.9560901)
@@ -3490,7 +3493,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7370467, 0, 0.9560901)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44900036, 0, -0.26872098)
 
 [node name="Options" parent="ChatBubble3" index="5" unique_id=428158937]
-transform = Transform3D(0.86210716, 0, 0.506726, 0, 1, 0, -0.506726, 0, 0.86210716, -1.5583227, 3.2151644, 2.4682617)
+transform = Transform3D(0.9420401, 0, -0.33550102, 0, 1, 0, 0.33550102, 0, 0.9420401, 2.4942222, 3.2151644, 1.0027509)
 
 [node name="OptionInputArea2" parent="ChatBubble3/Options" index="1" unique_id=716177767]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.52306986, -1.0073538, 0)
@@ -3509,14 +3512,14 @@ _player_chat_rotation = Vector3(0, 38, 0)
 _npc = 2
 
 [node name="Background" parent="ChatBubble4" index="0" unique_id=1906216501]
-transform = Transform3D(0.9344841, 0.35600397, -1.5561433e-08, -1.0353412e-15, -4.3711392e-08, -1, -0.35600397, 0.9344841, -4.08476e-08, -0.2653818, 3.406697, 0.44341993)
-surface_material_override/0 = SubResource("StandardMaterial3D_1kice")
+transform = Transform3D(0.38537467, 0.9227602, -4.0335113e-08, -1.9163839e-15, -4.3711385e-08, -1, -0.9227602, 0.38537467, -1.684525e-08, -0.8783884, 3.0344775, 1.3048334)
+surface_material_override/0 = SubResource("StandardMaterial3D_37s47")
 
 [node name="A" parent="ChatBubble4" index="1" unique_id=1065478678]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0356705, 3.2989492, 1.1920929e-07)
+transform = Transform3D(0.5988419, 0, 0.80086744, 0, 1, 0, -0.80086744, 0, 0.5988419, -0.86647415, 2.7086055, 1.3081684)
 
 [node name="B" parent="ChatBubble4" index="2" unique_id=1089420267]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47749949, 3.7712085, 0.065704346)
+transform = Transform3D(0.51739997, 0, 0.8557441, 0, 1, 0, -0.8557441, 0, 0.51739997, -0.8730278, 2.706879, 1.3098688)
 
 [node name="Camera3D" parent="ChatBubble4" index="3" unique_id=409625418]
 transform = Transform3D(0.9272558, -0.13658985, 0.34862587, 0, 0.93108773, 0.36479548, -0.3744286, -0.33825874, 0.86335653, 0.74336433, 3.157654, 3.9576051)
@@ -3528,7 +3531,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7370467, 0, 0.9560901)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44900036, 0, -0.26872098)
 
 [node name="Options" parent="ChatBubble4" index="5" unique_id=428158937]
-transform = Transform3D(0.86210716, 0, 0.506726, 0, 1, 0, -0.506726, 0, 0.86210716, -1.5583227, 3.2151644, 2.4682617)
+transform = Transform3D(0.23347427, 0, 0.21096288, 0, 0.4630262, 0, -0.32054904, 0, 0.15365636, -0.2618165, 2.7262967, 3.451221)
 
 [node name="OptionInputArea2" parent="ChatBubble4/Options" index="1" unique_id=716177767]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.52306986, -1.0073538, 0)
@@ -3553,7 +3556,6 @@ mesh = SubResource("ArrayMesh_hqei8")
 shape = SubResource("ConcavePolygonShape3D_kvpfn")
 
 [node name="atap" type="MeshInstance3D" parent="ruang kelas" unique_id=171123131]
-visible = false
 mesh = SubResource("ArrayMesh_at86c")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="ruang kelas/atap" unique_id=493252879]
@@ -4281,6 +4283,15 @@ shape = SubResource("ConcavePolygonShape3D_i1hsc")
 
 [node name="Gaul" parent="." unique_id=1156860534 instance=ExtResource("16_ca42v")]
 transform = Transform3D(0.02184233, 0.025422394, -0.99943817, -0.004701576, 0.9996682, 0.025325494, 0.9997503, 0.0041457647, 0.021954656, 0.44378924, 0.9034895, 1.20363)
+
+[node name="nerd2" parent="." unique_id=275340877 instance=ExtResource("18_ssvqc")]
+transform = Transform3D(-0.3442496, 0, -0.9388783, 0, 1, 0, 0.9388783, 0, -0.3442496, 0.063713074, 0.8378668, 4.4129324)
+
+[node name="wibu" parent="." unique_id=1632730600 instance=ExtResource("19_1kice")]
+transform = Transform3D(-0.28470144, 0, -0.95861626, 0, 1, 0, 0.95861626, 0, -0.28470144, 11.732359, 0.89238685, 6.1494145)
+
+[node name="preman" parent="." unique_id=900092435 instance=ExtResource("20_5newe")]
+transform = Transform3D(0.5342638, 0, -0.8453178, 0, 1, 0, 0.8453178, 0, 0.5342638, 11.446928, 1.4611878, -4.6810713)
 
 [editable path="ChatBubble"]
 [editable path="ChatBubble2"]

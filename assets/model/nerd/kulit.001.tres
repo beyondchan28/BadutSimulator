@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cdjcp3l0wvgtx"]
+
+[ext_resource type="Texture2D" uid="uid://cc8d0bk88o4i4" path="res://assets/model/nerd/kulit.jpg.jpg" id="1_183j8"]
+
+[resource]
+resource_name = "kulit.001"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_183j8")
